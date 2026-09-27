@@ -1,0 +1,2 @@
+# Netlify Force HTTPS Redirect
+http://*  https://:splat  301!

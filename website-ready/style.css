@@ -1,0 +1,2800 @@
+/* ==========================================================================
+   OFFICIAL CHAMBER OF ADV. AJAI KUMAR SHUKLA
+   Advocate, Hon'ble High Court of Judicature at Allahabad (Lucknow Bench)
+   Former Member — Disciplinary Committee, Bar Council of Uttar Pradesh
+   Design Architecture: Elite Judicial Heritage & Supreme Court Stature
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & JUDICIAL COLOR SYSTEM
+   -------------------------------------------------------------------------- */
+:root {
+  /* Obsidian & Midnight Velvet Palette (Deep Stately Judicial Ink) */
+  --ink-obsidian: #070B14;
+  --ink-midnight: #0B1220;
+  --ink-chamber:  #101A2E;
+  --ink-surface:  #16233B;
+  --ink-card:     #0D1627;
+
+  /* Brushed Champagne Gold & Antique Brass (Prestigious, Non-Gaudy) */
+  --gold-primary: #C5A059;
+  --gold-light:   #E0C78E;
+  --gold-dark:    #8C6F34;
+  --gold-hairline: rgba(197, 160, 89, 0.28);
+  --gold-border:   rgba(197, 160, 89, 0.45);
+  --gold-glow:     rgba(197, 160, 89, 0.16);
+
+  /* Gold Gradients */
+  --gold-gradient: linear-gradient(135deg, #E0C78E 0%, #C5A059 45%, #9E7D36 100%);
+  --gold-metallic: linear-gradient(110deg, #A88338 0%, #DFBE76 30%, #C5A059 55%, #F0DEB0 75%, #9E7D36 100%);
+  --gold-subtle-bg: rgba(197, 160, 89, 0.08);
+
+  /* Archival Bond Parchment & Alabaster (Warm High-Contrast Reading) */
+  --bg-parchment:      #FAF8F5;
+  --bg-parchment-soft: #F3EFE7;
+  --bg-card-white:     #FFFFFF;
+  --border-parchment:  #E8E2D5;
+  --border-parchment-subtle: #EFEBE1;
+
+  /* Typography Colors */
+  --text-heading-dark: #070B14;
+  --text-body-dark:    #242D3D;
+  --text-muted-dark:   #596579;
+  --text-heading-light:#FFFFFF;
+  --text-body-light:   #CBD5E1;
+  --text-muted-light:  #94A3B8;
+
+  /* Emergency Bail & Serious Legal Action (Deep Velvet Burgundy) */
+  --burgundy-deep:     #520A0A;
+  --burgundy-bright:   #B91C1C;
+  --burgundy-bg:       #FEF2F2;
+  --burgundy-border:   rgba(185, 28, 28, 0.35);
+
+  /* Typography Stacks */
+  --font-royal: 'Cinzel', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-hindi: 'Noto Serif Devanagari', 'Cormorant Garamond', Georgia, serif;
+
+  /* Layout, Radii & Hairline Dimensions */
+  --container-max: 1220px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadow Elevations (Subtle Depth & Ambient Softness) */
+  --shadow-subtle: 0 2px 8px rgba(7, 11, 20, 0.04);
+  --shadow-card:   0 8px 24px -4px rgba(7, 11, 20, 0.08), 0 2px 6px -1px rgba(7, 11, 20, 0.03);
+  --shadow-hover:  0 16px 36px -6px rgba(7, 11, 20, 0.12), 0 0 0 1px var(--gold-border);
+  --shadow-night:  0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(197, 160, 89, 0.12);
+  --shadow-modal:  0 30px 80px rgba(0, 0, 0, 0.75), 0 0 40px rgba(197, 160, 89, 0.2);
+
+  /* Stately, Measured Transitions */
+  --tr-fast:   0.18s ease;
+  --tr-normal: 0.28s cubic-bezier(0.2, 0.8, 0.25, 1);
+  --tr-slow:   0.45s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BASE RULES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-body-dark);
+  background-color: var(--bg-parchment);
+  line-height: 1.7;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+}
+
+/* Common Containers & Elements */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+}
+
+img, svg {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--tr-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.text-center { text-align: center; }
+.text-gold   { color: var(--gold-primary) !important; }
+.w-full      { width: 100%; }
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY HIERARCHY & SECTION INSERTS
+   -------------------------------------------------------------------------- */
+.section-intro {
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-royal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold-light);
+  background: rgba(16, 26, 46, 0.85);
+  border: 1px solid var(--gold-border);
+  padding: 0.4rem 1.15rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.8vw, 3rem);
+  font-weight: 600;
+  color: var(--text-heading-dark);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 180px;
+  margin: 1.25rem auto 1.35rem;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.gold-divider::before {
+  background: linear-gradient(90deg, transparent, var(--gold-primary));
+}
+.gold-divider::after {
+  background: linear-gradient(90deg, var(--gold-primary), transparent);
+}
+
+.gold-divider {
+  position: relative;
+}
+.gold-divider::after {
+  content: '';
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted-dark);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.68;
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTON & ACTION STYLES (DIGNIFIED & STATELY)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--tr-normal);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    padding: 0.8rem 1.35rem;
+  }
+}
+
+/* Primary Brushed Gold Button */
+.btn-gold {
+  background: var(--gold-gradient);
+  color: var(--ink-obsidian);
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Outline Stately Button */
+.btn-outline {
+  background: transparent;
+  color: var(--text-body-dark);
+  border: 1px solid var(--border-parchment);
+}
+
+.btn-outline:hover {
+  background: var(--bg-parchment-soft);
+  border-color: var(--gold-primary);
+  color: var(--ink-obsidian);
+}
+
+/* Outline Light Button for Hero / Dark Sections */
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-heading-light);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold-primary);
+  color: var(--ink-obsidian);
+}
+
+/* Emergency Action Button (Non-Blinking, Deep Authoritative Velvet Red) */
+.btn-emergency {
+  background: linear-gradient(135deg, #7F1D1D 0%, #520A0A 100%);
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.85rem 1.4rem;
+  box-shadow: 0 6px 18px rgba(127, 29, 29, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.btn-emergency:hover {
+  background: linear-gradient(135deg, #991B1B 0%, #660E0E 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(127, 29, 29, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   5. BCI RULE 36 STATUTORY DISCLAIMER MODAL (OFFICIAL GAZETTE DECREE)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(4, 7, 14, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--tr-normal), visibility var(--tr-normal);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: var(--bg-card-white);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-modal);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.98);
+  transition: transform var(--tr-slow);
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Decorative Top Hairline Gold Bar */
+.modal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gold-gradient);
+  z-index: 10;
+}
+
+.modal-header {
+  padding: 1.75rem 2rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--border-parchment);
+  background: var(--bg-parchment);
+}
+
+.modal-crest {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ink-obsidian);
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.modal-crest .crest-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.badge-statutory {
+  display: inline-block;
+  font-family: var(--font-royal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.35rem;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink-obsidian);
+  line-height: 1.25;
+}
+
+.modal-subtitle-hi {
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  color: var(--text-muted-dark);
+  margin-top: 0.25rem;
+}
+
+.modal-body {
+  padding: 1.75rem 2rem;
+  overflow-y: auto;
+  font-size: 0.94rem;
+  color: var(--text-body-dark);
+  line-height: 1.7;
+}
+
+.notice-box {
+  background: #FFFDF7;
+  border-left: 3px solid var(--gold-primary);
+  border-top: 1px solid var(--border-parchment);
+  border-right: 1px solid var(--border-parchment);
+  border-bottom: 1px solid var(--border-parchment);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1.35rem;
+  font-size: 0.91rem;
+  color: #6B4E1B;
+}
+
+.modal-list {
+  margin: 1rem 0 1.35rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.modal-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.modal-list li::before {
+  content: '⚖';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+}
+
+.modal-list li strong {
+  color: var(--ink-obsidian);
+  font-weight: 600;
+}
+
+.modal-hindi-note {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--text-muted-dark);
+  background: var(--bg-parchment);
+  padding: 0.9rem 1.15rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-parchment);
+  line-height: 1.6;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background: var(--bg-parchment);
+  border-top: 1px solid var(--border-parchment);
+}
+
+@media (max-width: 640px) {
+  .modal-card {
+    max-height: 94vh;
+  }
+  .modal-header {
+    padding: 1.25rem 1.25rem 1rem;
+    gap: 0.85rem;
+  }
+  .modal-crest {
+    width: 42px;
+    height: 42px;
+  }
+  .modal-crest .crest-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .modal-title {
+    font-size: 1.25rem;
+  }
+  .modal-body {
+    padding: 1.15rem 1.25rem;
+  }
+  .modal-footer {
+    padding: 1rem 1.25rem;
+    flex-direction: column-reverse;
+  }
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. TOP STATUTORY BAR (DEEP VELVET CHANCELLERY ACCENT)
+   -------------------------------------------------------------------------- */
+.top-bar {
+  background-color: #040812;
+  color: var(--text-muted-light);
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--gold-hairline);
+  padding: 0.55rem 0;
+  letter-spacing: 0.02em;
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.top-credential {
+  color: var(--gold-light);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-credential .star-icon {
+  color: var(--gold-primary);
+  font-size: 0.95rem;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-link {
+  color: var(--text-heading-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.top-link:hover {
+  color: var(--gold-primary);
+}
+
+.separator {
+  color: rgba(197, 160, 89, 0.35);
+}
+
+.top-chamber-loc {
+  display: none;
+  color: var(--text-muted-light);
+}
+
+@media (min-width: 960px) {
+  .top-chamber-loc {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    display: none; /* Hide top bar on mobile to eliminate overlap and duplicate hero credential */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. SITE HEADER & NAVIGATION (ROYAL HIGH BENCH EMBLEM)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #070B14;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-hairline);
+  transition: all var(--tr-normal);
+}
+
+.site-header.scrolled {
+  background: #050810;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.65);
+  border-bottom-color: var(--gold-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  text-decoration: none;
+}
+
+.brand-emblem {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16243D 0%, #070B14 100%);
+  border: 1.5px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(197, 160, 89, 0.25);
+}
+
+.brand-emblem svg {
+  width: 24px;
+  height: 24px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-royal);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-heading-light);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+
+.brand-sub {
+  font-size: 0.74rem;
+  color: var(--gold-light);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+}
+
+/* Desktop Nav Menu */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.85rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-royal);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D1D5DB;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color var(--tr-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold-gradient);
+  transition: width var(--tr-normal);
+}
+
+.nav-link:hover {
+  color: var(--gold-light);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-cta-btn {
+  font-family: var(--font-royal);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-hairline);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hamburger-line {
+  width: 22px;
+  height: 2px;
+  background-color: var(--gold-light);
+  transition: all var(--tr-normal);
+}
+
+.mobile-toggle.is-active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.mobile-toggle.is-active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #070B14;
+  border-bottom: 1px solid var(--gold-hairline);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  padding: 1.5rem 1.25rem 2rem;
+  z-index: 999;
+}
+
+.mobile-nav[hidden] {
+  display: none;
+}
+
+.mobile-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-link {
+  display: block;
+  font-family: var(--font-royal);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #E2E8F0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-nav-link:hover {
+  color: var(--gold-primary);
+}
+
+.mobile-cta-item {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.mobile-chamber-details {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--gold-hairline);
+  font-size: 0.82rem;
+  color: var(--text-muted-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-credential {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.mobile-call-link a {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    height: auto;
+    min-height: 62px;
+    padding: 0.5rem 0;
+  }
+  .brand-link {
+    gap: 0.7rem;
+    max-width: calc(100% - 50px);
+  }
+  .brand-emblem {
+    width: 40px;
+    height: 40px;
+  }
+  .brand-emblem svg {
+    width: 20px;
+    height: 20px;
+  }
+  .brand-name {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand-sub {
+    font-size: 0.68rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (min-width: 960px) {
+  .desktop-nav {
+    display: flex;
+  }
+  .mobile-toggle {
+    display: none;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. HERO SECTION (HIGH BENCH DIGNITY & SOVEREIGN PRESTIGE)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  background: radial-gradient(circle at 75% 25%, #182846 0%, #0B1425 45%, #050913 100%);
+  color: var(--text-heading-light);
+  padding: 2rem 0 3.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--gold-hairline);
+}
+
+/* Subtle Architectural Grid Pattern */
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(197, 160, 89, 0.09) 1px, transparent 1px),
+    linear-gradient(to right, rgba(197, 160, 89, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* High-Impact State Bar Council Honor Medallion */
+.honor-badge-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.honor-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, rgba(22, 36, 61, 0.85) 0%, rgba(7, 11, 20, 0.92) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--gold-border);
+  padding: 0.6rem 1.6rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--gold-glow);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.badge-text-hi {
+  font-family: var(--font-hindi);
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+}
+
+.badge-divider {
+  color: var(--gold-primary);
+  opacity: 0.7;
+}
+
+.badge-text-en {
+  font-family: var(--font-royal);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+@media (max-width: 640px) {
+  .honor-badge-wrap {
+    justify-content: center;
+  }
+  .honor-badge {
+    text-align: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.78rem;
+  }
+  .badge-divider {
+    display: none;
+  }
+  .badge-text-hi,
+  .badge-text-en {
+    width: 100%;
+  }
+}
+
+/* Hero Main Split Grid */
+.hero-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-main-grid {
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 3.5rem;
+  }
+}
+
+.hero-content {
+  text-align: left;
+}
+
+.hero-hindi-title {
+  font-family: var(--font-hindi);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+.hero-title {
+  font-family: var(--font-royal);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.55rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  font-weight: 500;
+  color: #D1D5DB;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.bench-tag {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+/* Judicial Chamber Motto */
+.hero-motto {
+  position: relative;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 2px solid var(--gold-primary);
+  border-right: 2px solid var(--gold-primary);
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-style: italic;
+  color: #F8FAFC;
+  margin-bottom: 1.35rem;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.quote-mark {
+  color: var(--gold-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.motto-sub {
+  display: block;
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  font-style: normal;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  margin-top: 0.4rem;
+}
+
+.hero-intro-text {
+  font-size: 1.05rem;
+  color: var(--text-muted-light);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+  max-width: 660px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.btn-hero {
+  padding: 0.95rem 2rem;
+  font-size: 0.96rem;
+}
+
+/* Trust Indicators Row */
+.hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.86rem;
+  color: #D1D5DB;
+  font-weight: 500;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trust-item svg {
+  color: var(--gold-primary);
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    text-align: center;
+  }
+  .hero-motto {
+    text-align: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.85rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-trust-row {
+    justify-content: center;
+    gap: 0.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. HERO ADVOCATE PORTRAIT FRAME (SENIOR COUNSEL HIGH CHAMBER)
+   -------------------------------------------------------------------------- */
+.hero-portrait-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-portrait-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  background: linear-gradient(145deg, rgba(224, 199, 142, 0.4) 0%, rgba(13, 22, 39, 0.95) 50%, rgba(140, 111, 52, 0.35) 100%);
+  box-shadow: var(--shadow-night);
+  border: 1px solid var(--gold-border);
+  transition: transform var(--tr-slow), box-shadow var(--tr-slow);
+}
+
+.hero-portrait-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.8), 0 0 35px var(--gold-glow);
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.25) 0%, rgba(16, 26, 46, 0.15) 50%, transparent 75%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(16px);
+}
+
+.portrait-img-box {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--radius-lg) - 6px);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--ink-midnight);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.55);
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.hero-portrait-frame:hover .hero-portrait-img {
+  transform: scale(1.03);
+}
+
+.portrait-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 11, 20, 0.02) 0%, rgba(7, 11, 20, 0.15) 65%, rgba(7, 11, 20, 0.85) 100%);
+  pointer-events: none;
+}
+
+/* Floating Top Pill Badge */
+.portrait-top-pill {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  background: rgba(7, 11, 20, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.25rem;
+  font-family: var(--font-royal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.portrait-top-pill .pill-icon {
+  font-size: 0.9rem;
+  color: var(--gold-primary);
+}
+
+/* Floating Experience Tag */
+.portrait-exp-badge {
+  position: absolute;
+  bottom: 74px;
+  left: -14px;
+  z-index: 3;
+  background: var(--gold-gradient);
+  color: var(--ink-obsidian);
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 160, 89, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.portrait-exp-badge .exp-years {
+  font-family: var(--font-royal);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.portrait-exp-badge .exp-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.portrait-exp-badge .exp-meta strong {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portrait-exp-badge .exp-meta span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Floating Official Details Card / Pedestal Inscription */
+.portrait-details-card {
+  position: absolute;
+  bottom: -24px;
+  left: 16px;
+  right: 16px;
+  z-index: 3;
+  background: rgba(11, 18, 32, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65), 0 0 20px var(--gold-glow);
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.card-crest-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+.portrait-details-card .card-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.card-name {
+  font-family: var(--font-royal);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.card-desig {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.15rem;
+}
+
+.card-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted-light);
+}
+
+@media (max-width: 640px) {
+  .hero-portrait-frame {
+    max-width: 320px;
+    margin-top: 1.25rem;
+    margin-bottom: 3.5rem; /* Sufficient clearance for floating details card */
+  }
+  .portrait-exp-badge {
+    display: none; /* Hide on mobile to eliminate overlap with details card; 13+ years standing is prominently displayed in the stats grid directly below */
+  }
+  .portrait-details-card {
+    left: 8px;
+    right: 8px;
+    bottom: -24px;
+    padding: 0.85rem 1rem;
+  }
+  .portrait-top-pill {
+    top: -12px;
+    font-size: 0.72rem;
+    padding: 0.38rem 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. CREDENTIAL METRICS ROW (PLAQUES OF STANDING)
+   -------------------------------------------------------------------------- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .stats-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(16, 26, 46, 0.7) 0%, rgba(7, 11, 20, 0.85) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all var(--tr-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold-gradient);
+  opacity: 0.6;
+  transition: opacity var(--tr-normal);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--gold-glow);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xs);
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid var(--gold-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+.stat-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-top: 0.15rem;
+}
+
+.stat-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted-light);
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 640px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. ABOUT ADVOCATE & PROFILE SECTION (BOND PARCHMENT ARCHIVAL)
+   -------------------------------------------------------------------------- */
+.about-section {
+  padding: 5rem 0;
+  background-color: var(--bg-parchment);
+  position: relative;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.about-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-left: 4px solid var(--gold-primary);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem 1.65rem;
+  box-shadow: var(--shadow-card);
+}
+
+.about-callout-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ink-obsidian);
+  color: var(--gold-light);
+  border: 1.5px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-callout-title {
+  font-family: var(--font-royal);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-obsidian);
+  line-height: 1.3;
+}
+
+.about-callout-hindi {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin: 0.25rem 0 0.45rem;
+}
+
+.about-callout-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted-dark);
+  line-height: 1.6;
+}
+
+.paragraph-lead {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--ink-obsidian);
+}
+
+/* 4 Judicial Pillars */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-box {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  display: flex;
+  gap: 0.95rem;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--tr-normal);
+}
+
+.pillar-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-card);
+}
+
+.pillar-bullet {
+  font-family: var(--font-royal);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.pillar-title {
+  font-family: var(--font-royal);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-obsidian);
+  margin-bottom: 0.25rem;
+}
+
+.pillar-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted-dark);
+  line-height: 1.55;
+}
+
+/* Right Column: High Court Chamber Prestige Card */
+.about-prestige-card {
+  position: sticky;
+  top: 100px;
+}
+
+.prestige-card-inner {
+  background: var(--ink-obsidian);
+  color: var(--text-heading-light);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--gold-border);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-night);
+  position: relative;
+  overflow: hidden;
+}
+
+.crest-watermark {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 9rem;
+  color: rgba(197, 160, 89, 0.04);
+  pointer-events: none;
+  font-family: serif;
+}
+
+.prestige-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gold-hairline);
+  margin-bottom: 1.5rem;
+}
+
+.prestige-avatar-badge {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-primary);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+  flex-shrink: 0;
+}
+
+.prestige-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prestige-avatar-seal {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--gold-primary);
+  color: var(--ink-obsidian);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.prestige-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.prestige-tag {
+  font-family: var(--font-royal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.prestige-name {
+  font-family: var(--font-royal);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  margin: 0.2rem 0;
+}
+
+.prestige-court {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #CBD5E1;
+}
+
+.prestige-bench {
+  font-size: 0.78rem;
+  color: var(--gold-primary);
+  font-weight: 600;
+}
+
+.prestige-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 1.75rem;
+}
+
+.prestige-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-label {
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.9;
+}
+
+.item-val {
+  font-size: 0.92rem;
+  color: #E2E8F0;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+.prestige-badge-seal {
+  background: rgba(197, 160, 89, 0.09);
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.seal-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--ink-obsidian);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.seal-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.seal-text span {
+  font-size: 0.74rem;
+  color: var(--gold-light);
+}
+
+.seal-text strong {
+  font-family: var(--font-royal);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   12. PRACTICE AREAS & JURISDICTIONS (LEATHER-BOUND DOSSIER DESIGN)
+   -------------------------------------------------------------------------- */
+.practice-section {
+  padding: 5.5rem 0;
+  background-color: var(--bg-parchment-soft);
+  position: relative;
+  border-top: 1px solid var(--border-parchment);
+  border-bottom: 1px solid var(--border-parchment);
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.85rem;
+}
+
+@media (min-width: 768px) {
+  .practice-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .practice-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.practice-card {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--tr-normal);
+  box-shadow: var(--shadow-card);
+}
+
+.practice-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background var(--tr-normal);
+}
+
+.practice-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-hover);
+}
+
+.practice-card:hover::before {
+  background: var(--gold-gradient);
+}
+
+/* Featured Priority Card (Criminal Defense & Bail) */
+.practice-card-featured {
+  border-color: var(--gold-primary);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+}
+
+.practice-card-featured::before {
+  background: var(--gold-gradient);
+}
+
+.card-featured-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--gold-gradient);
+  color: var(--ink-obsidian);
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.35);
+}
+
+.practice-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.practice-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xs);
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid var(--gold-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-dark);
+  transition: all var(--tr-normal);
+}
+
+.practice-card:hover .practice-icon-box {
+  background: var(--ink-obsidian);
+  color: var(--gold-light);
+  border-color: var(--gold-primary);
+}
+
+.practice-icon-box svg {
+  width: 26px;
+  height: 26px;
+}
+
+.practice-num {
+  font-family: var(--font-royal);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--border-parchment);
+  transition: color var(--tr-normal);
+}
+
+.practice-card:hover .practice-num {
+  color: var(--gold-primary);
+}
+
+.practice-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink-obsidian);
+  line-height: 1.28;
+  margin-bottom: 0.65rem;
+}
+
+.practice-jurisdiction {
+  font-family: var(--font-royal);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+.practice-desc {
+  font-size: 0.92rem;
+  color: var(--text-body-dark);
+  line-height: 1.68;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.practice-features {
+  list-style: none;
+  border-top: 1px solid var(--border-parchment);
+  padding-top: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.86rem;
+  color: var(--text-muted-dark);
+}
+
+.practice-features li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.practice-features li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold-primary);
+  font-size: 0.65rem;
+  top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   13. CHAMBER COORDINATES & CONSULTATION DOSSIER FORM
+   -------------------------------------------------------------------------- */
+.chamber-section {
+  padding: 5.5rem 0;
+  background-color: var(--bg-parchment);
+  position: relative;
+}
+
+.chamber-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .chamber-grid {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+/* Left Column: Chamber Coordinates Card */
+.chamber-info-card {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.chamber-header-block {
+  border-bottom: 1px solid var(--border-parchment);
+  padding-bottom: 1.25rem;
+}
+
+.chamber-card-title {
+  font-family: var(--font-royal);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-obsidian);
+}
+
+.chamber-card-sub {
+  font-size: 0.88rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* Emergency Bail & Police Detention Alert Box */
+.emergency-alert-box {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FEF2F2 100%);
+  border: 1px solid var(--burgundy-border);
+  border-left: 4px solid var(--burgundy-bright);
+  border-radius: var(--radius-xs);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.emergency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-royal);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--burgundy-bright);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--burgundy-bright);
+}
+
+.emergency-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--burgundy-deep);
+  line-height: 1.3;
+}
+
+.emergency-text {
+  font-size: 0.86rem;
+  color: #7F1D1D;
+  line-height: 1.55;
+}
+
+/* Chamber Details List */
+.chamber-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.coord-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.coord-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-xs);
+  background: var(--bg-parchment-soft);
+  border: 1px solid var(--border-parchment);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.coord-heading {
+  font-family: var(--font-royal);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-obsidian);
+}
+
+.coord-body {
+  font-size: 0.88rem;
+  color: var(--text-body-dark);
+  line-height: 1.55;
+  margin-top: 0.2rem;
+}
+
+.link-gold {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.link-gold:hover {
+  text-decoration: underline;
+}
+
+.bci-seal-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-parchment-soft);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-xs);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted-dark);
+  font-style: italic;
+}
+
+.bci-seal-mini svg {
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+/* Right Column: Formal Legal Brief Dossier (Consultation Form) */
+.consultation-form-wrap {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-parchment);
+  padding-bottom: 1.25rem;
+}
+
+.badge-gold {
+  display: inline-block;
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.4rem;
+}
+
+.form-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink-obsidian);
+  line-height: 1.25;
+}
+
+.form-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted-dark);
+  line-height: 1.6;
+  margin-top: 0.35rem;
+}
+
+.consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-family: var(--font-royal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-obsidian);
+}
+
+.required-star {
+  color: var(--burgundy-bright);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-xs);
+  padding: 0.85rem 1.15rem;
+  font-size: 0.94rem;
+  color: var(--ink-obsidian);
+  transition: all var(--tr-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+.form-control.is-invalid {
+  border-color: var(--burgundy-bright);
+  background-color: var(--burgundy-bg);
+}
+
+.form-error {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--burgundy-bright);
+  margin-top: 0.3rem;
+}
+
+.form-error.is-visible {
+  display: block;
+}
+
+/* BCI Rule 36 Checkbox Declaration */
+.form-declaration {
+  background: var(--bg-parchment-soft);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-xs);
+  padding: 0.85rem 1.1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold-dark);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.declaration-text {
+  font-size: 0.82rem;
+  color: var(--text-body-dark);
+  line-height: 1.5;
+}
+
+.btn-submit-whatsapp {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.form-success-banner {
+  background: #ECFDF5;
+  border: 1px solid #10B981;
+  color: #065F46;
+  border-radius: var(--radius-xs);
+  padding: 0.9rem 1.15rem;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .chamber-info-card,
+  .consultation-form-wrap {
+    padding: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13B. CHAMBER & HIGH COURT GOOGLE MAP NAVIGATION
+   -------------------------------------------------------------------------- */
+.chamber-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.chamber-locations-grid .chamber-map-wrapper {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 992px) {
+  .chamber-locations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+}
+
+.chamber-map-wrapper {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 1.85rem;
+  box-shadow: var(--shadow-card);
+}
+
+.map-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-parchment);
+}
+
+.map-info-left {
+  flex: 1 1 400px;
+}
+
+.map-pin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-dark);
+  font-family: var(--font-royal);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 0.6rem;
+}
+
+.map-heading {
+  font-family: var(--font-royal);
+  font-size: 1.25rem;
+  color: var(--ink-obsidian);
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+}
+
+.map-address-text {
+  font-size: 0.92rem;
+  color: var(--text-muted-dark);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.btn-map-directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.map-iframe-card {
+  width: 100%;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 1px solid var(--border-parchment);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  background: #E2E8F0;
+}
+
+.map-iframe-card iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+}
+
+@media (max-width: 768px) {
+  .chamber-map-wrapper {
+    padding: 1.25rem;
+    margin-top: 2rem;
+  }
+  .map-info-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .map-info-right {
+    width: 100%;
+  }
+  .btn-map-directions {
+    width: 100%;
+    justify-content: center;
+  }
+  .map-iframe-card iframe {
+    height: 280px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. PROCEDURAL LEGAL FAQS (STATELY DETAILS ACCORDION)
+   -------------------------------------------------------------------------- */
+.faqs-section {
+  padding: 5.5rem 0;
+  background-color: var(--bg-parchment-soft);
+  border-top: 1px solid var(--border-parchment);
+}
+
+.faq-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.faq-card {
+  background: var(--bg-card-white);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--tr-normal);
+}
+
+.faq-card[open] {
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.65rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  font-size: 1.1rem;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+.faq-title-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink-obsidian);
+  line-height: 1.35;
+  flex-grow: 1;
+}
+
+.chevron-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--gold-primary);
+  transition: transform var(--tr-normal);
+  flex-shrink: 0;
+}
+
+.faq-card[open] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 1.65rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-body-dark);
+  line-height: 1.7;
+  border-top: 1px solid var(--border-parchment-subtle);
+  margin-top: 0.25rem;
+  padding-top: 1.15rem;
+}
+
+.faq-answer p {
+  margin-bottom: 0.85rem;
+}
+
+.faq-answer ul,
+.faq-answer ol {
+  margin: 0.85rem 0 0.85rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.faq-answer li strong {
+  color: var(--ink-obsidian);
+}
+
+/* --------------------------------------------------------------------------
+   15. FOOTER & BCI STATUTORY DIRECTORY (SOVEREIGN MIDNIGHT)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--ink-obsidian);
+  color: var(--text-heading-light);
+  border-top: 2px solid var(--gold-primary);
+}
+
+.footer-top {
+  padding: 4.5rem 0 3.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+  }
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.footer-crest-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.crest-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink-chamber);
+  border: 1.5px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.footer-title {
+  font-family: var(--font-royal);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+.footer-title-hi {
+  font-family: var(--font-hindi);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+}
+
+.footer-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted-light);
+  margin-top: 0.15rem;
+}
+
+.footer-creds-highlight {
+  font-size: 0.84rem;
+  color: var(--gold-light);
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid var(--gold-hairline);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-xs);
+  line-height: 1.5;
+}
+
+.footer-bio-short {
+  font-size: 0.86rem;
+  color: var(--text-muted-light);
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-family: var(--font-royal);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.35rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--gold-gradient);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: #D1D5DB;
+}
+
+.footer-links a:hover {
+  color: var(--gold-primary);
+  padding-left: 4px;
+}
+
+.footer-disclaimer-btn {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.footer-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted-light);
+  line-height: 1.6;
+}
+
+.footer-address strong {
+  color: #FFFFFF;
+}
+
+.footer-phone-link {
+  color: var(--gold-light);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* Footer BCI Compliance Bar */
+.footer-compliance-bar {
+  background: #04070E;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.25rem 0;
+}
+
+.compliance-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.compliance-text {
+  font-size: 0.8rem;
+  color: var(--text-muted-light);
+  max-width: 850px;
+  line-height: 1.55;
+}
+
+.compliance-text strong {
+  color: var(--gold-light);
+}
+
+.btn-sm {
+  padding: 0.45rem 1.15rem;
+  font-size: 0.8rem;
+}
+
+/* Footer Bottom Copyright */
+.footer-bottom {
+  padding: 1.25rem 0;
+  background: #020408;
+  font-size: 0.78rem;
+  color: var(--text-muted-light);
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .footer-top {
+    padding: 3.5rem 0 2.5rem;
+  }
+  .compliance-inner,
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. FLOATING WHATSAPP CHAMBER BUTTON (DISCREET & DIGNIFIED)
+   -------------------------------------------------------------------------- */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  color: #FFFFFF;
+  border: 1.5px solid var(--gold-primary);
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1.25rem 0.65rem 0.85rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(18, 140, 126, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  transition: all var(--tr-normal);
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(18, 140, 126, 0.6);
+}
+
+.floating-label {
+  font-family: var(--font-royal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .floating-whatsapp {
+    bottom: 18px;
+    right: 18px;
+    padding: 0.65rem;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+  }
+  .floating-label {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17. PRINT MEDIA STYLES (JUDICIAL COURT SUBMISSION READINESS)
+   -------------------------------------------------------------------------- */
+@media print {
+  .modal-overlay,
+  .site-header,
+  .top-bar,
+  .floating-whatsapp,
+  .btn,
+  .consultation-form-wrap {
+    display: none !important;
+  }
+  body {
+    background: #FFFFFF;
+    color: #000000;
+    font-size: 12pt;
+  }
+  .hero-section {
+    background: none !important;
+    color: #000000 !important;
+    padding: 0;
+  }
+  .hero-title, .section-title {
+    color: #000000 !important;
+  }
+}

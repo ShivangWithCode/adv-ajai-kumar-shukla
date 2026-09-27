@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://advajaikumarshukla.in/sitemap.xml
