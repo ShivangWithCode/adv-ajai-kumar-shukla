@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0C78E"/>
+      <stop offset="50%" stop-color="#C5A059"/>
+      <stop offset="100%" stop-color="#9E7D36"/>
+    </linearGradient>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#16233B"/>
+      <stop offset="100%" stop-color="#070B14"/>
+    </radialGradient>
+  </defs>
+  <circle cx="256" cy="256" r="244" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="16"/>
+  <polygon points="244,108 268,108 256,76" fill="url(#goldGrad)"/>
+  <circle cx="256" cy="108" r="14" fill="url(#goldGrad)"/>
+  <rect x="249" y="118" width="14" height="264" rx="4" fill="url(#goldGrad)"/>
+  <polygon points="185,380 327,380 345,410 167,410" fill="url(#goldGrad)"/>
+  <rect x="150" y="410" width="212" height="22" rx="6" fill="url(#goldGrad)"/>
+  <line x1="116" y1="172" x2="396" y2="172" stroke="url(#goldGrad)" stroke-width="14" stroke-linecap="round"/>
+  <line x1="117" y1="175" x2="76" y2="276" stroke="url(#goldGrad)" stroke-width="5"/>
+  <line x1="117" y1="175" x2="168" y2="276" stroke="url(#goldGrad)" stroke-width="5"/>
+  <path d="M68 276 Q 122 316 176 276 Z" fill="url(#goldGrad)"/>
+  <line x1="395" y1="175" x2="344" y2="276" stroke="url(#goldGrad)" stroke-width="5"/>
+  <line x1="395" y1="175" x2="436" y2="276" stroke="url(#goldGrad)" stroke-width="5"/>
+  <path d="M336 276 Q 390 316 444 276 Z" fill="url(#goldGrad)"/>
+</svg>
